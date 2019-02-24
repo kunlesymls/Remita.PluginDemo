@@ -1,0 +1,85 @@
+﻿@model Remita.NetDemo.ViewModels.PayRemitaVm
+
+
+@{
+    ViewBag.Title = "PayRemita";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="col-sm-1"></div>
+                <div class="col-md-5">
+                    <h2>Make Payment</h2>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            <div class="col-md-11">
+                                @Html.Label("Payer's Name")
+                                @Html.EditorFor(model => model.PayerName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.PayerName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-11">
+                                @Html.Label("Payer's Email")
+                                @Html.EditorFor(model => model.PayerEmail, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.PayerEmail, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-11">
+                                @Html.Label("Payer's Phone Number")
+                                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-md-11">
+                                @Html.Label("Amount")
+                                @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-11">
+                                @Html.Label("Payment Type")
+                                @Html.EnumDropDownListFor(model => model.RemitaPaymentType, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.RemitaPaymentType, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <input type="submit" value="PROCEED" class="btn block btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+
+                <div class="col-md-5">
+                    <br />
+                    <br />
+                    <br />
+                    <img class="img-responsive" src="~/Content/Images/remita-payment-logo-vertical.png" width="300" />
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
